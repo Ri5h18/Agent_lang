@@ -24,37 +24,6 @@ powershell -ExecutionPolicy Bypass -File .\run-site.ps1
 
 Open `http://127.0.0.1:8000`. The production build and API are served by one process. For development, run `.\run-backend.ps1` and `.\run-frontend.ps1` in separate terminals, then open `http://127.0.0.1:5173`.
 
-## Ollama
-
-The default model is `llama3.1`. Start Ollama and pull the model if needed:
-
-```powershell
-ollama serve
-ollama pull llama3.1
-ollama pull nomic-embed-text
-```
-
-Optional overrides before launch:
-
-```powershell
-$env:AGENTIC_MODEL = "llama3.1"
-$env:OLLAMA_BASE_URL = "http://127.0.0.1:11434"
-.\run-site.ps1
-```
-
-The Ollama switch is enabled only when the configured model is detected. Without it, Knowledge mode still returns retrieved source excerpts and the Drafter remains editable.
-
-## Verification
-
-```powershell
-cd C:\Users\admin\Desktop\AGENTIC_LANG\backend
-& ..\.venv\Scripts\python.exe -m unittest discover -s tests -v
-
-cd ..\frontend
-npm run lint
-npm run build
-```
-
 ## Project map
 
 ```text
